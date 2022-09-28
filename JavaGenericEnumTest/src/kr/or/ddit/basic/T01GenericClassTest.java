@@ -65,6 +65,7 @@ class NonGeneric {
 	}
 }
 
+
 class MyGeneric<T> {
 	private T val;
 
