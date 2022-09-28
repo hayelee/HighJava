@@ -9,16 +9,19 @@ public class T06EnumTest {
 	// City 열거형 객체 선언 ( 기본값을 이용하는 열거형)
 	public enum City {서울, 부산, 대구, 광주, 대전};
 	
+	public enum Hometown {대구, 서울, 대전, 부산, 울산, 진주};
+	
 	// 데이터값을 임의로 지정한 열거형 객체 선언
 	// 데이터값을 정해줄 경우에는 생성자를 만들어서 괄호속의 값이 변수에 저장되도록 해야 한다.
 	public enum Season {
-		봄("3월부터 5월까지"), 여름("6월부터 8월까지"), 가을("9월부터 11월까지"), 겨울("12월부터 2월까지");
+		봄("3월부터 5월까지"), 여름("6월부터 8월까지"),
+		가을("9월부터 11월까지"), 겨울("12월부터 2월까지");
 		
 		// 괄호속의 값이 저장될 변수 선언
 		private String str;
 		
-		// 생성자 만들기(열거형의 생성자는 제어자가 묵시적으로 'private'이다.)
-		Season(String data) {
+		// 생성자 만들기(열거형의 생성자는 제어자가 묵시적으로 'private'이다.(private를 따로 쓰지 않아도))
+		Season(String data) { 
 			this.str = data;
 		}
 		
@@ -38,6 +41,7 @@ public class T06EnumTest {
 		City myCity1; // 열거형 객체변수 선언
 		City myCity2;
 		
+		//"서울"에 해당하는 enum상수를 리턴
 		myCity1 = City.서울;
 		myCity2 = City.valueOf("서울");
 		
@@ -65,10 +69,13 @@ public class T06EnumTest {
 			System.out.println(city + " : " + city.ordinal());
 		}
 		
-		City city = City.대구;
+		City city = City.대구; 
+		
+		Enum<City> city2 = City.대구;
 		
 		System.out.println(city == City.대전);
 		System.out.println(city == City.대구);
+		// System.out.println(city == Hometown.대구); // 타입이 다르다고 인식해서 오류가남
 		
 		System.out.println("대구 => " + city.compareTo(city.대구));
 		System.out.println("서울 => " + city.compareTo(city.서울));

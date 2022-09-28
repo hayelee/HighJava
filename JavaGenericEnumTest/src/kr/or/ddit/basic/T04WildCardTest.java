@@ -41,8 +41,8 @@ public class T04WildCardTest {
 // 쥬서
 class Juicer {
 	
-	//static <T extends Fruit> void makeJuice(FruitBox<T> box) {
-	static void makeJuice(FruitBox<?> box) {//와일드카드 제너릭한 방법 사용
+	//static <T extends Fruit> void makeJuice(FruitBox<T> box) {//extends = 제너릭한 방법 사용
+	static void makeJuice(FruitBox<?> box) {//와일드카드 
 		
 		String fruitListStr = ""; // 과일 목록
 		
@@ -53,10 +53,8 @@ class Juicer {
 			}else {
 				fruitListStr += "," + f;
 			}
-			
 			cnt++;
 		}
-				
 		System.out.println(fruitListStr + " => 쥬스 완성!!!");
 	}
 }
@@ -133,4 +131,3 @@ class FruitBox<T extends Fruit> {
 		fruitList.add(fruit);
 	}
 }
-
