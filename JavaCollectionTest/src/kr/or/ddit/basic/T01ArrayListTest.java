@@ -59,7 +59,7 @@ public class T01ArrayListTest {
 		for(int i=0; i<list2.size(); i++) {
 			System.out.println(i + " : " + list2.get(i));
 		}
-		System.out.println("-------------------------------");
+		System.out.println("----------------------------------------");
 		
 		// contain(비교객체); => 리스트에 '비교객체'가 있으면 true, 없으면 false 리턴
 		System.out.println(list2.contains("DDD"));
@@ -91,5 +91,4 @@ public class T01ArrayListTest {
 		}
 		System.out.println("리스트 삭제 후 : " + list2);	
 	}
-	
 }
