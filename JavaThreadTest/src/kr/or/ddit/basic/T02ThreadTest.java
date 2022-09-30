@@ -24,7 +24,7 @@ public class T02ThreadTest {
 		// 방법3: 익명클래스를 이용하는 방법
 		//       Runnable인터페이스를 구현한 익명클래스를 Thread
 		//       인스턴스를 생성할 때 매개변수로 넘겨준다.
-		// 자주쓰지 않는 클래스는 따로 도출하지 않고 그냥 사용하니까!
+		//       자주쓰지 않는 클래스는 따로 도출하지 않고 그냥 사용하니까!
 		Thread th3 = new Thread(new Runnable() {
 
 			@Override

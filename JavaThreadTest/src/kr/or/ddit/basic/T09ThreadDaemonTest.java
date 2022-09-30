@@ -6,6 +6,7 @@ public class T09ThreadDaemonTest {
 		AutoSaveThread autoSave = new AutoSaveThread();
 		
 		// 데몬스레드로 설정하기 (start() 호출 전에 설정한다.)
+		// 일반스레드를 보조해! 일반스레드가 없으면 스스로 자멸해
 		autoSave.setDaemon(true); // 디폴트값은 false
 		
 		autoSave.start();
@@ -23,7 +24,6 @@ public class T09ThreadDaemonTest {
 		System.out.println("메인 스레드 종료...");
 	}
 }
-
 
 /**
  * 자동 저장 기능 제공하는 스레드(3초에 한번씩 저장하기)
