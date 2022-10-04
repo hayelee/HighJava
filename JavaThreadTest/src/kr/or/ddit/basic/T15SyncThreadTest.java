@@ -16,16 +16,21 @@ public class T15SyncThreadTest {
 class ShareObject {
 	private int sum = 0;
 
-	synchronized public void add() {
-		for (int i = 0; i < 1000000000; i++) {} // 시간때우기용
-
-		int n = sum;
-		n += 10;
-		sum = n;
+	// 동기화 하는 방법1 : 메서드 자체에 동기화 처리하기
+	public void add() {
+		
+		// 동기화 하는 방법2 : 동기화 블럭으로 설정하기1
+		// mutex : Mutal exclusion Object(상호배제 : 동시접근 차단)
+		//synchronized (this) {
+			for (int i = 0; i < 1000000000; i++) {} // 시간때우기용
+			int n = sum;
+			n += 10;
+			sum = n;
 
 		System.out.println(Thread.currentThread().getName() + "합계 : " + sum);
+		}
 	}
-}
+//}
 
 //작업을 수행하는 스레드
 class WorkerThread extends Thread {
@@ -39,7 +44,10 @@ class WorkerThread extends Thread {
 	@Override
 	public void run() {
 		for (int i = 1; i <= 10; i++) {
-			sObj.add();
+			// 동기화 하는 방법2 : 동기화 블럭으로 설정하기2
+			synchronized (sObj) {
+				sObj.add();
+			}
 		}
 	}
 }
