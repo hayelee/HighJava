@@ -8,7 +8,6 @@ public class T10ThreadStateTest {
  	<스레드의 상태>
  	
  	- NEW : 스레드가 생성되고 아직 start()가 호출되지 않은 상태
- 	- START : 실행대기상태
  	- RUNNABLE : 실행 중 또는 실행 가능한 상태
  	- BLOCKED : 동기화 블럭에 의해서 일시정지된 상태(Lock이 풀릴때까지 기다리는 상태)
  	- WAITING, TIMED_WAITING : 스레드의 작업이 종료되지는 않았지만 실행 가능하지 않은
