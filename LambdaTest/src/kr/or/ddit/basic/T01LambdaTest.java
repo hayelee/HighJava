@@ -18,7 +18,7 @@ public class T01LambdaTest {
 
 	      // 람다식을 사용하지 않는 경우
 	      Thread th1 = new Thread(new Runnable() {
-
+	      	  	
 	         @Override
 	         public void run() {
 	            for (int i = 1; i <= 10; i++) {
