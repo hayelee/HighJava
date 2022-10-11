@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
- * 성능 향상을 위한 보조스트림 예제
+ * 성능 향상을 위한 보조스트림 예제 //버퍼를 이용하면 훨씬 효율적임 (빨라)
  */
 public class T12BufferedIOTest {
 	
