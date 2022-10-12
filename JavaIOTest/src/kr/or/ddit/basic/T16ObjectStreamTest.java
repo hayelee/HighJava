@@ -78,7 +78,8 @@ public class T16ObjectStreamTest {
 	}
 }
 
-class Member implements Serializable { // IO작업을 하기 위해서는  implements Serializable가 필수
+class Member implements Serializable {
+	// IO작업을 하기 위해서는  implements Serializable가 필수
 	// 실제 추상메서드를 갖고 있지는 않지만, 표시하는 용도로 사용됨
 	// 자바는 Serializable 인터페이스를 구현한 클래스만 직렬화 할 수 있도록 제한하고 있음.
 

@@ -1,10 +1,17 @@
 package kr.or.ddit.basic;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
-import java.util.Set;
 
 /*
 문제) 이름, 주소, 전화번호 속성을 갖는 Phone클래스를 만들고, 이 Phone클래스를 이용하여 
@@ -64,13 +71,14 @@ import java.util.Set;
   프로그램을 종료합니다...
   
 */
-public class T09PhoneBookTest {
+public class phoneBookTest02 {
 	private Scanner scan;
-	private Map<String, Phone> phonBookMap;
+	private Map<String, Phone> phoneBookMap;
 	
-	public T09PhoneBookTest() {
+	
+	public phoneBookTest02() {
 		scan = new Scanner(System.in);
-		phonBookMap = new HashMap<String, Phone>();
+		phoneBookMap = new HashMap<String, Phone>();
 	}
 	
 	// 메뉴를 출력하는 메서드
@@ -118,151 +126,163 @@ public class T09PhoneBookTest {
 		} // while문
 	}
 	
-	/*
-	 * 이름을 이용한 전화번호 정보 검색하기
-	 */
 	private void search() {
-		
 		System.out.println();
 		System.out.println("전화번호 정보를 검색할 이름을 입력하세요.");
-		
-		System.out.print("이름 >> ");
+		System.out.println("이름>> ");
 		String name = scan.next();
 		
-		Phone p = phonBookMap.get(name);
+		Phone p = phoneBookMap.get(name);
 		
-		if(p == null) {
+		if(p==null) {
 			System.out.println(name + "씨의 전화번호 정보는 존재하지 않습니다.");
-		}else {
+		} else {
 			System.out.println(name + "씨의 전화번호 정보");
-			System.out.println("이      름: " + p.getName());
-			System.out.println("전화번호: " + p.getTel());
-			System.out.println("주      소: " + p.getAddr());
+			System.out.println("이     름 " + p.getName());
+			System.out.println("전화번호 " + p.getTel());
+			System.out.println("주     소 " + p.getAddr());
 		}
 	}
 
-	/*
-	 *  전체 전화번호 정보 출력하는 메서드
+	/**
+	 * 전체 전화번호 정보 출력하는 메서드
 	 */
 	private void displayAll() {
 		
-		System.out.println("============================================");
+		System.out.println("===========================================================");
 		System.out.println(" 번호\t이름\t전화번호\t주소");
-		System.out.println("============================================");
+		System.out.println("===========================================================");
 		
-		Set<String> keySet = phonBookMap.keySet();
+//		Set<String> keySet = phoneBookMap.keySet();
+		ObjectInputStream ois = null;
 		
-		if(keySet.size() == 0) {
-			System.out.println("등록된 전화번호가 존재하지 않습니다.");
-		}else {
+		try {
+			ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("d:/D_Other/phoneBook.bin")));
+			Object obj = null;
+			while((obj = ois.readObject())!=null) { //역직렬화
+				//읽어온 데이터를 원래의 객체형으로 변환 후 사용한다.
+				Phone p = (Phone) obj;
+				System.out.println("이름 : " + p.getName());
+				System.out.println("전화번호 : " + p.getTel());
+				System.out.println("주소 : " + p.getAddr());
+				System.out.println("------------------------------------");
+			}
 			
-			Iterator<String> it = keySet.iterator();
-			
-			int cnt = 0;
-			while(it.hasNext()) {
-				cnt++;
-				String name = it.next();
-				Phone p = phonBookMap.get(name);
-				
-				System.out.println(" " + cnt + "\t" + p.getName()
-						+ "\t" + p.getTel() + "\t" + p.getAddr());
+		}catch(IOException ex) {
+			//더이상 읽어올 객체가 없으면 예외 발생
+			System.out.println("출력작업 끝...");
+			//ex.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				ois.close();
+			}catch(IOException e) {
+				e.printStackTrace();
 			}
 		}
-		System.out.println("============================================");
-		System.out.println("출력  완료...");
 	}
 
-	/*
-	 *  전화번호 정보를 삭제하는 메서드
-	 */
 	private void delete() {
 		System.out.println();
 		System.out.println("삭제할 전화번호 정보를 입력하세요.");
-		
-		System.out.print("이름 >> ");
+		System.out.println("이름>> ");
 		String name = scan.next();
 		
 		// remove(key) => 삭제 성공하면 삭제된 value값을 반환하고 실패하면 null을 리턴함.
-		if(phonBookMap.remove(name) == null) {
+		if(phoneBookMap.remove(name)==null) {
 			System.out.println(name + "씨는 등록된 사람이 아닙니다.");
 		} else {
-			System.out.println(name + "씨 정보를 삭제했습니다.");
+		 System.out.println(name + "씨 정보를 삭제했습니다.");
 		}
+		
 		System.out.println("삭제 작업 완료...");
 	}
 
-	/*
-	 * 기존의 전화번호 정보를 수정하는 메서드
+	/**
+	 * 기존 전화번호 정보를 수정하는 메서드
 	 */
 	private void update() {
 		System.out.println();
 		System.out.println("변경할 전화번호 정보를 입력하세요.");
-		
-		System.out.print("이름 >> ");
+		System.out.println("이름>> ");
 		String name = scan.next();
 		
-		// 이미 등록된 사람인지 체크하기
-	    // get()메서드로 값을 가져올때 가져올 자료가 없으면 null을 리턴한다.
-		if(phonBookMap.get(name) == null) {
+		//이미 등록된 사람인지 체크하기
+		//get()메서드로 값을 가져올 때 가져올 자료가 없으면 null을 리턴한다.
+		if(phoneBookMap.get(name) == null) {
 			System.out.println(name + "씨는 등록되지 않은 사람입니다.");
-			return; // 메서드 종료.
+			return; //메서드 종료
 		}
 		
-		System.out.print("전화번호 >> ");
+		System.out.println("전화번호 >>");
 		String tel = scan.next();
-
-		System.out.print("주소 >> ");
-		scan.nextLine(); // 입력버퍼에 남아있는 엔터키값까지를 읽어와 버리는 역할을 수행한다.
+		
+		System.out.println("주소 >>");
+		scan.nextLine(); //입력버퍼에 남아있는 엔터키값까지 읽어와 버리는 역할 수행.
 		String addr = scan.nextLine();
 		
 		Phone p = new Phone(name, tel, addr);
 		
-		phonBookMap.put(name, p);
-		System.out.println(name + "씨 정보 수정 완료...");
+		phoneBookMap.put(name, p);
+		System.out.println(name + "씨 정보수정 완료.");
 	}
-	
-		/*
-		 * 새로운 전화번호 정보를 등록하는 메서드
-		 * (이미 등록된 사람은 등록되지 않는다.)
-		 */
+
+	/**
+	 * 새로운 전화번호 정보를 등록하는 메서드
+	 * (이미 등록된 사람은 등록되지 않는다.)
+	 */
 	private void insert() {
 		System.out.println();
 		System.out.println("새롭게 등록할 전화번호 정보를 입력하세요.");
-		
-		System.out.print("이름 >> ");
+		System.out.println("이름>> ");
 		String name = scan.next();
 		
-		// 이미 등록된 사람인지 체크하기
-	    // get()메서드로 값을 가져올때 가져올 자료가 없으면 null을 리턴한다.
-		if(phonBookMap.get(name) != null) {
+		//이미 등록된 사람인지 체크하기
+		//get()메서드로 값을 가져올 때 가져올 자료가 없으면 null을 리턴한다.
+		if(phoneBookMap.get(name)!=null) {
 			System.out.println(name + "씨는 이미 등록된 사람입니다.");
-			return; // 메서드 종료.
+			return; //메서드 종료
 		}
 		
-		System.out.print("전화번호 >> ");
+		System.out.println("전화번호 >>");
 		String tel = scan.next();
-
-		System.out.print("주소 >> ");
-		scan.nextLine(); // 입력버퍼에 남아있는 엔터키값까지를 읽어와 버리는 역할을 수행한다.
+		
+		System.out.println("주소 >>");
+		scan.nextLine(); //입력버퍼에 남아있는 엔터키값까지 읽어와 버리는 역할 수행.
 		String addr = scan.nextLine();
 		
-		Phone p = new Phone(name, tel, addr);
 		
-		phonBookMap.put(name, p);
-		System.out.println(name + "씨 정보 등록 완료...");
+		ObjectOutputStream oos = null;
+		try {
+			oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("D:\\D_Other\\phoneBook.bin")));
+			Phone p = new Phone(name, tel, addr);
+			oos.writeObject(p);
+			System.out.println("입력 완료");
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (oos != null) {
+					oos.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println(name + "씨 정보등록 완료.");
 	}
 
 	public static void main(String[] args) {
-		
-		new T09PhoneBookTest().phoneBookStart();
-		
+		new phoneBookTest02().phoneBookStart();
 	}
+	
 }
 
-/*
- * 전화번호 정보를 저장하기 위한 VO 클래스
- */
-class Phone {
+class Phone implements Serializable  {
 	private String name;
 	private String tel;
 	private String addr;
@@ -298,26 +318,6 @@ class Phone {
 		this.addr = addr;
 	}
 
-	@Override
-	public String toString() {
-		return "Phone [name=" + name + ", tel=" + tel + ", addr=" + addr + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(addr, name, tel);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Phone other = (Phone) obj;
-		return Objects.equals(addr, other.addr) && Objects.equals(name, other.name) && Objects.equals(tel, other.tel);
-	}
 }
+		
 

@@ -18,7 +18,7 @@ public class T15PrintStreamTest {
 		/*
 		 	PrintStream은 모든 자료형을 출력할 수 있는 기능을 제공하는
 		 	OutputSteam의 서브클래스이다.
-		 	(출력기능을 하는 보조스트림)
+		 	(출력기능을 하는 보조스트림     )
 		 */
 //		PrintStream out = new PrintStream(fos); // 출력하려면 기본스트림(fos)이 필요함
 		PrintStream out = new PrintStream(System.out); 
