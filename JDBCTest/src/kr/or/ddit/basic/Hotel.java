@@ -146,7 +146,7 @@ public class Hotel {
 		while (true) {
 			displayMenu(); // 메뉴 출력
 			int menuNum = scan.nextInt(); // 메뉴번호 입력
-
+			
 			switch (menuNum) {
 			case 1:  // 체크인
 				checkIn(); 
@@ -158,6 +158,7 @@ public class Hotel {
 				State();
 				break;
 			case 4:  // 작업 끝
+				System.out.println();
 				System.out.println("**************************");
 				System.out.println("호텔 문을 닫았습니다.");
 				System.out.println("**************************");
@@ -286,7 +287,7 @@ public class Hotel {
 			if(cnt > 0) {
 				System.out.println("체크아웃 되었습니다.");
 			} else {
-			System.out.println(roomNum + "방에는 체크인한 사람이 없습니다.");
+			System.out.println(roomNum + "방에는 체크인을 한 사람이 없습니다.");
 			}	
 		}catch(SQLException ex) {
 			ex.printStackTrace();

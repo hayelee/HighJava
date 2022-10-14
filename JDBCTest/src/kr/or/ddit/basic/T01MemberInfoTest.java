@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import kr.or.ddit.util.JDBCUtil2;
+import kr.or.ddit.util.JDBCUtil3;
+import kr.or.ddit.util.JDBCUtil3;
 
 /*
 	회원정보를 관리하는 프로그램을 작성하는데 
@@ -102,7 +103,7 @@ public class T01MemberInfoTest {
 		
 		try {
 			
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = "select * from mymember";
 			
@@ -127,7 +128,7 @@ public class T01MemberInfoTest {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -143,7 +144,7 @@ public class T01MemberInfoTest {
 		String memId = scan.next();
 		
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = "delete from mymember where mem_id = ?";
 			
@@ -161,7 +162,7 @@ public class T01MemberInfoTest {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -200,7 +201,7 @@ public class T01MemberInfoTest {
 		String memAddr = scan.nextLine();
 		
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = " update mymember" 
 					     + " set mem_name = ?,"  
@@ -225,7 +226,7 @@ public class T01MemberInfoTest {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 
@@ -265,7 +266,7 @@ public class T01MemberInfoTest {
 		
 		try {
 			
-			conn = JDBCUtil2.getConnection(); // 커넥션 가져오기
+			conn = JDBCUtil3.getConnection(); // 커넥션 가져오기
 			
 			String sql = " insert into mymember " 
 			+ " (MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR, REG_DT)"
@@ -288,7 +289,7 @@ public class T01MemberInfoTest {
 		}catch(SQLException ex){
 			ex.printStackTrace();
 		}finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 	}
 	
@@ -302,7 +303,7 @@ public class T01MemberInfoTest {
 		boolean exist = false;
 		
 		try {
-			conn = JDBCUtil2.getConnection();
+			conn = JDBCUtil3.getConnection();
 			
 			String sql = "select count(*) as cnt " 
 			+ " from mymember " 
@@ -326,7 +327,7 @@ public class T01MemberInfoTest {
 		}catch(SQLException ex) {
 			ex.printStackTrace();
 		}finally {
-			JDBCUtil2.close(conn, stmt, pstmt, rs);
+			JDBCUtil3.close(conn, stmt, pstmt, rs);
 		}
 		
 		return exist; // 중복 안나는 것
