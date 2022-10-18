@@ -5,7 +5,7 @@
 
 <configuration>
 	
-	<properties resource="db.properties" />
+	<properties resource="db.properties" /> <!-- 설정정보를 밖으로 뽑아냄 그것을 참조한 것  -->
 	
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.board.vo.BoardVO" alias="BoardVO"/>
