@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    
+    <File name="MyFile" fileName="logs/app.log">
+    	<PatternLayout>
+    		<Pattern>%d %-5p %c{1} [%t] %C{2} (%F:%L) - %m%n</Pattern>
+    	</PatternLayout>
+    </File>
+  </Appenders>
+
+  <Loggers>
+  	<!-- 여기에 로거 추가 -->
+	<Logger name="log4jexam.sql" level="debug" additivity="false">
+		<AppenderRef ref="Console"/>
+		<AppenderRef ref="MyFile"/>  <!-- console에도 file에도 저장하고 싶을 때 추가 -->
+	</Logger>
+	
+	<!--<Logger name="log4jexam.sql.Parameter" level="debug"> 
+	</Logger>-->
+	
+	<Logger name="kr.or.ddit.basic.T01MemberInfoTest" level="debug">
+	</Logger>
+    <Root level="debug"> <!-- Root -> 모든 로거의 공통 설정(근본이 되는 로그) -->
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+
+</Configuration>
+
+
+
+
+
