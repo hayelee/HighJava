@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="memberTest">
+<mapper namespace="member">
 <!-- 쿼리 이름이 중복될 수 있을 때 방지하는 것 = namespace 필수임~! -->
 <!-- 
 	이 영역에 SQL문에 맞는 태그를 사용하여 SQL문을 기술한다.
@@ -44,4 +44,63 @@
 		where mem_id = #{memId}
 	</update>
 	
+	<delete id="deleteMember" parameterType="String">
+		
+		delete from mymember where mem_id = #{memId}
+	
+	</delete>
+	
+	<select id="selectAllMember" resultType="kr.or.ddit.member.vo.MemberVO">
+		
+		select mem_id as memId, 
+		       mem_name as memName, 
+		       mem_tel as memTel,
+		       mem_addr as memAddr
+		  from mymember
+		
+	</select>
+	
+	<select id="selectMember" parameterType="String" resultType="MemberVO">
+	
+		select mem_id as memId, 
+		       mem_name as memName, 
+		       mem_tel as memTel,
+		       mem_addr as memAddr
+		  from mymember
+		  where mem_id = #{memId}
+		
+	</select>
+	
+	<select id="checkMember" parameterType="String" resultType="int">
+	
+		select count(*) as cnt
+		  from mymember
+		  where mem_id = #{memId}
+		
+	</select>
+	
+	
+	<resultMap type="MemberVO" id="memMap">
+		<id column="mem_id" property="memId"/>
+		<result column="mem_name" property="memName"/>
+		<result column="mem_tel" property="memTel"/>
+		<result column="mem_addr" property="memAddr"/>
+	</resultMap>
+	<select id="searchMember" parameterType="MemberVO" resultMap="memMap">
+		
+		select * from mymember where 1=1
+		
+		<if test="memId != null and memId != ''">
+		         and mem_id = #{memId}
+		</if>
+		<if test="memName != null and memName != ''">
+		         and mem_name = #{memName}
+		</if>
+		<if test="memTel != null and memTel != ''">
+		         and mem_tel = #{memTel}
+		</if>
+		<if test="memAddr != null and memAddr != ''">
+		         and mem_addr like '%' || #{memAddr} || '%'
+		</if>
+	</select>
 </mapper>
