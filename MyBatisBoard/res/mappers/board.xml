@@ -60,6 +60,13 @@
 		       BOARD_DATE as boardDate
 		  from JDBC_BOARD
 		 order by 1
+		<!-- select BOARD_NO as boardNum,
+		       BOARD_TITLE as boardTitle,
+		       BOARD_WRITER as boardWriter, 
+		       BOARD_CONTENT as boardContent, 
+		       BOARD_DATE as boardDate
+		  from JDBC_BOARD
+		 order by 1 -->
 	 	
 	</select>
 	

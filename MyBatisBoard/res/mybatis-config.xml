@@ -7,8 +7,13 @@
 	
 	<properties resource="db.properties" /> <!-- 설정정보를 밖으로 뽑아냄 그것을 참조한 것  -->
 	
-	<typeAliases>
-		<typeAlias type="kr.or.ddit.board.vo.BoardVO" alias="BoardVO"/>
+	<settings>
+	<!-- DB 컬럼명을 낙타표기법으로 속성명과 자동 매핑 처리하기 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<typeAliases> <!-- 별칭을 주는 것(별칭을 주면서 코드 간단하게 만들 수 있음) -->
+		<typeAlias type="kr.or.ddit.board.vo.BoardVO" alias="BoardVO"/> 
 	</typeAliases>
 	
 	<environments default="dev">
