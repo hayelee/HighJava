@@ -61,8 +61,8 @@ public class BoardMain {
 		System.out.println("  2. 글 삭제");
 		System.out.println("  3. 글 수정");
 		System.out.println("  4. 전체 목록 출력");
-		System.out.println("  5. 글 검색.");
-		System.out.println("  6. 작업 끝.");
+		System.out.println("  5. 글 검색");
+		System.out.println("  6. 작업 끝");
 		System.out.println("----------------------");
 		System.out.print("원하는 작업 선택 >> ");
 	}

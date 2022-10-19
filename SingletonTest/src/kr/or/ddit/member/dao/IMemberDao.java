@@ -23,7 +23,7 @@ public interface IMemberDao {
 	    * @return 해당 회원 ID가 있으면 true, 없으면 false
 	    */
 	   
-	   public boolean checkMember(String memID);
+	   public boolean checkMember(String memId);
 	   
 	   /**
 	    * 하나의 MemberVO객체를 이용하여 DB정보를 update하는 메서드

@@ -108,7 +108,6 @@
 		       BOARD_CONTENT 
 		       from JDBC_BOARD 
 		       where 1=1
-		       order by 1
 		
 <!-- 		<if test="boardTitle != null and boardTitle != ''"> -->
 <!-- 		         and BOARD_TITLE = #{boardTitle} -->
