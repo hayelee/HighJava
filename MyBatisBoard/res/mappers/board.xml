@@ -88,6 +88,7 @@
 		select count(*) as cnt
 		  from JDBC_BOARD
 		  where BOARD_NO = #{boardNum}
+		  order by 1
 		
 	</select>
 	
