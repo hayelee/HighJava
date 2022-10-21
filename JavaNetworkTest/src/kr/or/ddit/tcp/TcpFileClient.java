@@ -16,9 +16,9 @@ public class TcpFileClient {
 	private DataOutputStream dos;
 	private DataInputStream dis;
 	
-	private void cliendStart() {
+	private void clientStart() {
 		
-		File file = new File("d:/D_Other/down/aaa.jpg");
+		File file = new File("d:/D_Other/br5.jpg");
 		
 		try {
 			socket = new Socket("192.168.35.90", 7777);
@@ -35,7 +35,7 @@ public class TcpFileClient {
 				
 				BufferedInputStream bis = new BufferedInputStream(socket.getInputStream());
 				
-				BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
+				BufferedOutputStream bos = new BufferedOutputStream(fos);
 				
 				int data = 0;
 				while((data = bis.read()) != -1) {
@@ -61,5 +61,8 @@ public class TcpFileClient {
 				e.printStackTrace();
 			}
 		}
+	}
+	public static void main(String[] args) {
+		new TcpFileClient().clientStart();
 	}
 }

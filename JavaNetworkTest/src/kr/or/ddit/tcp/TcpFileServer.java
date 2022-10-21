@@ -29,6 +29,7 @@ public class TcpFileServer {
 			String downDir = "d:/D_Other/";
 			
 			File file = null;
+			// 클라이언트 대기하기
 			while(true) {
 				System.out.println("파일 전송 대기중...");
 				socket = server.accept();
@@ -49,6 +50,7 @@ public class TcpFileServer {
 					socket.close();
 					
 					continue;
+					
 				}else {
 					dos.writeUTF("OK"); // 요청파일 확인했음을 알려줌.
 					System.out.println("요청파일(" + file.getName() + ") 전송시작...");
@@ -60,6 +62,7 @@ public class TcpFileServer {
 				
 				BufferedOutputStream bos = new BufferedOutputStream(socket.getOutputStream());
 				
+				// 상대방에게  보내주기
 				int data = 0;
 				while((data = bis.read()) != -1) {
 					bos.write(data);
@@ -77,5 +80,9 @@ public class TcpFileServer {
 		}catch(IOException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) {
+		new TcpFileServer().serverStart();
 	}
 }
