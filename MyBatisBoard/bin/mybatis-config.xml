@@ -33,6 +33,7 @@
 		</environment>
 	</environments>
 	
+	<!-- 등록된 쿼리 파일 불러오기 -->
 	<mappers>
 		<mapper resource="mappers/board.xml"/>
 	</mappers>

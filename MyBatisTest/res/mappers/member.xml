@@ -31,9 +31,10 @@
 		<!-- ? 대신 myBatis가 좋아하는 방식(#{})으로 바꿔줘야함 -->
 		insert into mymember
 		(MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR, REG_DT)
+		<!-- jdbcType=VARCHAR -> 값이 없어도 null로 처리해줌 -->
 		values (#{memId}, #{memName}, #{memTel}, #{memAddr}, sysdate)
 		
-	
+		
 	</insert>
 	
 	<update id="updateMember" parameterType="kr.or.ddit.member.vo.MemberVO">

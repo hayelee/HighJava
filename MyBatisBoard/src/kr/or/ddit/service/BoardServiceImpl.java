@@ -37,7 +37,7 @@ public class BoardServiceImpl implements IBoardService { //dao를 가져오기 �
 
 	@Override
 	public boolean checkBoard(int boardNum) {
-		System.out.println("boardNum : " + boardNum);
+
 		boolean exist = boardDao.checkBoard(boardNum);
 		
 		return exist;
