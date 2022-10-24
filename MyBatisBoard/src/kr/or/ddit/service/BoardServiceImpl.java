@@ -7,6 +7,7 @@ import kr.or.ddit.board.dao.BoardDaoImplForJDBC;
 import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.board.vo.BoardVO;
 
+// 기능을 구현
 public class BoardServiceImpl implements IBoardService { //dao를 가져오기 위한 싱글톤
 	
 	// 나 자신을 담기 위한 멤버변수

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="board">
+<mapper namespace="board"> <!-- 이 이름으로 mapper xml을 구분함 -->
 <!-- 쿼리 이름이 중복될 수 있을 때 방지하는 것 = namespace 필수임~! -->
 <!-- 
 	이 영역에 SQL문에 맞는 태그를 사용하여 SQL문을 기술한다.

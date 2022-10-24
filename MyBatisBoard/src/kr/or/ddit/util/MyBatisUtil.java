@@ -22,7 +22,7 @@ public class MyBatisUtil {
 			Charset charset = Charset.forName("UTF-8");
 			Resources.setCharset(charset);
 
-			Reader rd = Resources.getResourceAsReader("mybatis-config.xml");
+			Reader rd = Resources.getResourceAsReader("mybatis-config.xml"); //dao에서 쿼리를 날리지 않고 xml에서 날릴거임
 
 			// 1-2 위에서 읽어온 Reader객체를 이용하여
 			// SqlSessionFactory객체 생성하기

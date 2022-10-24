@@ -23,7 +23,7 @@ public class BoardDaoImpl extends MyBaitsDao implements IBoardDao {
 	@Override
 	public int insertBoard(BoardVO mv) {
 
-		return insert("board.insertBoard", mv);
+		return insert("board.insertBoard", mv); // board=네임스페이스
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import kr.or.ddit.board.vo.BoardVO;
  * 컨트롤러의 요청을 받아 처리하는 서비스의 Interface.
  * @author PC-09
  */
+// 기능을 정의
 public interface IBoardService {
 
 	   /**

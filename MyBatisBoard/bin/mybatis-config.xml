@@ -34,8 +34,9 @@
 	</environments>
 	
 	<!-- 등록된 쿼리 파일 불러오기 -->
+	<!-- 매퍼xml -->
 	<mappers>
-		<mapper resource="mappers/board.xml"/>
+		<mapper resource="mappers/board.xml"/> <!-- dao가 아닌 xml에서 쿼리를 설정할거임 -->
 	</mappers>
 	
 </configuration>
