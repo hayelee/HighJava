@@ -18,7 +18,7 @@ public class T03ServletParameterTest extends HttpServlet {
 	/* 요청 객체로부터 파라미터 정보를 가져오는 방법
 	 	
 	   - getParameter() - 파라미터값이 한 개인 경우...
-	   - getParameterValues() - 파라미터값이 여러개인 경우...
+	   - getParameterValues() - 파라미터값이 여러개인 경우...(스트링계열로 가져옴)
 	                            ex) 체크박스
 	   - getParameterNames() - 요청메시지에 존재하는 모든 파라미터 정보를 가져올 때 사용함.
 	 */

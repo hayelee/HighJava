@@ -62,7 +62,7 @@ public class T02ServletTest extends HttpServlet{
 		// 상대방 브라우저에 쏴주기
 		out.println("name => " + name);
 		out.println("서블릿 경로 => " + req.getServletPath());
-		out.println("컨텍스트 경로 => " + req.getContextPath());
+		out.println("컨텍스트 경로 => " + req.getContextPath()); //여러개의 애플리케이션을 구분함
 		
 	}
 	
