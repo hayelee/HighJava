@@ -15,6 +15,7 @@ public class T06ServletSessionTest extends HttpServlet {
 	   세션(HttpSession)객체에 대하여...
       - 세션을 통해서 사용자(웹브라우져)별로 구분하여 정보를 관리할 수 있다 (세션ID이용)
       - 쿠키를 사용할 때 보다 보안이 향상된다.(서버에 정보가 저장되기 때문에)
+      - 사용자를 관리하기위해..(사용자별 1개만 만들어짐)
      
       - 세션객체를 가져오는 방법 
          HttpSession session = request.getSession(boolean값)

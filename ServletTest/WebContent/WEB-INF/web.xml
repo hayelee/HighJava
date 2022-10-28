@@ -5,6 +5,7 @@
 	<servlet>
 		<servlet-name>T01ServletLifeCycle</servlet-name> <!--이름은 맘대로 지어도 됨  -->
 		<servlet-class>kr.or.ddit.basic.T01ServletLifeCycle</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>T01ServletLifeCycle</servlet-name>
@@ -19,6 +20,7 @@
 		<servlet-name>T02ServletTest</servlet-name>
 		<url-pattern>/T02ServletTest</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>T03ServletParameterTest</servlet-name>
 		<servlet-class>kr.or.ddit.basic.T03ServletParameterTest</servlet-class>
@@ -27,6 +29,7 @@
 		<servlet-name>T03ServletParameterTest</servlet-name>
 		<url-pattern>/T03ServletParameterTest</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>T04ErrorHandler</servlet-name>
 		<servlet-class>kr.or.ddit.basic.T04ErrorHandler</servlet-class>
@@ -35,6 +38,7 @@
 		<servlet-name>T04ErrorHandler</servlet-name>
 		<url-pattern>/T04ErrorHandler</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>T05ServletCookieTest</servlet-name>
 		<servlet-class>kr.or.ddit.basic.T05ServletCookieTest</servlet-class>
@@ -43,15 +47,89 @@
 		<servlet-name>T05ServletCookieTest</servlet-name>
 		<url-pattern>/T05ServletCookieTest</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>T06ServletSessionTest</servlet-name>
 		<servlet-class>kr.or.ddit.basic.T06ServletSessionTest</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>T06ServletSessionTest</servlet-name>
-		<url-pattern>/T06ServletSessionTest/*</url-pattern>
+		<url-pattern>/T06ServletSessionTest</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>T07ServletContextTest</servlet-name>
+		<servlet-class>kr.or.ddit.basic.T07ServletContextTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>T07ServletContextTest</servlet-name>
+		<url-pattern>/T07ServletContextTest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>T09ServletContextListenerTest</servlet-name>
+		<servlet-class>kr.or.ddit.basic.T09ServletContextListenerTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>T09ServletContextListenerTest</servlet-name>
+		<url-pattern>/T09ServletContextListenerTest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>T10ServletRequestListenerTest</servlet-name>
+		<servlet-class>kr.or.ddit.basic.T10ServletRequestListenerTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>T10ServletRequestListenerTest</servlet-name>
+		<url-pattern>/T10ServletRequestListenerTest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>T11HttpSessionListenerTest</servlet-name>
+		<servlet-class>kr.or.ddit.basic.T11HttpSessionListenerTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>T11HttpSessionListenerTest</servlet-name>
+		<url-pattern>/T11HttpSessionListenerTest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>T12imageSerblet</servlet-name>
+		<servlet-class>kr.or.ddit.basic.T12imageSerblet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>T12imageSerblet</servlet-name>
+		<url-pattern>/T12imageSerblet</url-pattern>
+	</servlet-mapping>
+	
+	<listener>
+		<listener-class>kr.or.ddit.basic.MyServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>kr.or.ddit.basic.MyServletRequestListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>kr.or.ddit.basic.MyHttpSessionListener</listener-class>
+	</listener>
+	
+	<filter>
+		<filter-name>T08ServletFilter2</filter-name>
+		<filter-class>kr.or.ddit.basic.T08ServletFilter2</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>T08ServletFilter2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>T08ServletFilter</filter-name>
+		<filter-class>kr.or.ddit.basic.T08ServletFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>T08ServletFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	
 	<error-page>
 <!-- 		<error-code>500</error-code> -->
