@@ -23,6 +23,15 @@ public class DeleteMemberController extends HttpServlet {
 		
 		int cnt = memService.removeMember(memId);
 		
+		String msg = "";
+		if(cnt>0) {
+			msg="성공";
+			//성공
+		}else {
+			msg="실패";
+			//실패
+		}
+		req.getSession().setAttribute("msg", msg);
 		resp.sendRedirect(req.getContextPath() + "/member/list.do");
 		
 	}
