@@ -20,6 +20,17 @@ public class MemberVO { // 회원에 대한 세부데이터 정보를 하나의 
 	
 	private Date regDate;
 
+	private long atchFileId = -1; // 첨부파일Id->-1이면 첨부되지 않았다는 
+	
+	
+	public long getAtchFileId() {
+		return atchFileId;
+	}
+
+	public void setAtchFileId(long atchFileId) {
+		this.atchFileId = atchFileId;
+	}
+
 	public String getMemId() {
 		return memId;
 	}

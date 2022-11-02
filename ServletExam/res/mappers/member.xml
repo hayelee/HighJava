@@ -30,9 +30,9 @@
 	<insert id="insertMember" parameterType="kr.or.ddit.member.vo.MemberVO">
 		<!-- ? 대신 myBatis가 좋아하는 방식(#{})으로 바꿔줘야함 -->
 		insert into mymember
-		(MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR, REG_DT)
+		(MEM_ID, MEM_NAME, MEM_TEL, MEM_ADDR, REG_DT, ATCH_FILE_ID)
 		<!-- jdbcType=VARCHAR -> 값이 없어도 null로 처리해줌 -->
-		values (#{memId}, #{memName}, #{memTel}, #{memAddr}, sysdate)
+		values (#{memId}, #{memName}, #{memTel}, #{memAddr}, sysdate, #{atchFileId})
 		
 		
 	</insert>
@@ -41,7 +41,8 @@
 		update mymember
 		set mem_name = #{memName},  
 		mem_tel = #{memTel},
-		mem_addr = #{memAddr}
+		mem_addr = #{memAddr},
+		atch_file_id = #{atchFileId}
 		where mem_id = #{memId}
 	</update>
 	
@@ -63,7 +64,8 @@
 		select mem_id as memId, 
 		       mem_name as memName, 
 		       mem_tel as memTel,
-		       mem_addr as memAddr
+		       mem_addr as memAddr,
+		       atch_file_id as atchFileId
 		  from mymember
 		  where mem_id = #{memId}
 		
@@ -83,6 +85,7 @@
 		<result column="mem_name" property="memName"/>
 		<result column="mem_tel" property="memTel"/>
 		<result column="mem_addr" property="memAddr"/>
+		<result column="atch_file_id" property="atchFileId"/>
 	</resultMap>
 	<select id="searchMember" parameterType="MemberVO" resultMap="memMap">
 		
