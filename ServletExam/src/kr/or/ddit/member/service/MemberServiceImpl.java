@@ -1,4 +1,4 @@
-package kr.or.ddit.member.sirvice;
+package kr.or.ddit.member.service;
 
 import java.util.List;
 

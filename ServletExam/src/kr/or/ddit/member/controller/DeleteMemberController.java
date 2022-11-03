@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.member.sirvice.IMemberService;
-import kr.or.ddit.member.sirvice.MemberServiceImpl;
+import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.member.service.MemberServiceImpl;
 
 @WebServlet("/member/delete.do")
 public class DeleteMemberController extends HttpServlet {

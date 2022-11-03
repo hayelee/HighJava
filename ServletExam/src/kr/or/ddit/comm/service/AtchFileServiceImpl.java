@@ -1,4 +1,4 @@
-package kr.or.ddit.member.sirvice;
+package kr.or.ddit.comm.service;
 
 import java.awt.PageAttributes.OriginType;
 import java.io.File;
@@ -8,7 +8,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
-import kr.or.ddit.comm.service.IAtchFileService;
 import kr.or.ddit.comm.vo.AtchFileVO;
 import kr.or.ddit.member.dao.AtchFileDaoImpl;
 import kr.or.ddit.member.dao.IAtchFileDao;
@@ -99,7 +98,7 @@ public class AtchFileServiceImpl implements IAtchFileService {
 			ex.printStackTrace();
 		}
 		
-		return null;
+		return atchFileVO;
 		
 	}
 	
@@ -131,14 +130,12 @@ public class AtchFileServiceImpl implements IAtchFileService {
 
 	@Override
 	public List<AtchFileVO> getAtchFileList(AtchFileVO atchFileVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return fileDao.getAtchFileList(atchFileVO);
 	}
 
 	@Override
 	public AtchFileVO getAtchFileDetail(AtchFileVO atchFileVO) {
-		// TODO Auto-generated method stub
-		return null;
+		return fileDao.getAtchFileDetail(atchFileVO);
 	}
 
 }

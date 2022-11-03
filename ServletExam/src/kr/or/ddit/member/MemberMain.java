@@ -3,8 +3,8 @@ package kr.or.ddit.member;
 import java.util.List;
 import java.util.Scanner;
 
-import kr.or.ddit.member.sirvice.IMemberService;
-import kr.or.ddit.member.sirvice.MemberServiceImpl;
+import kr.or.ddit.member.service.IMemberService;
+import kr.or.ddit.member.service.MemberServiceImpl;
 import kr.or.ddit.member.vo.MemberVO;
 
 /*

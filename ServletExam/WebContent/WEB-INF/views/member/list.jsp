@@ -22,6 +22,7 @@
 			<th>이름</th>
 			<th>전화번호</th>
 			<th>주소</th>
+			<th>첨부파일ID</th>
 		</tr>
 		
 <%
@@ -34,6 +35,7 @@
 			<td><a href="detail.do?memId=<%= memList.get(i).getMemId() %>"><%= memList.get(i).getMemName() %></a></td>
 			<td><%= memList.get(i).getMemTel() %></td>
 			<td><%= memList.get(i).getMemAddr() %></td>
+			<td><%= memList.get(i).getAtchFileId() %></td>
 <%-- 		<td><%out.print(memList.get(i).getMemAddr()); %></td> --%>
 		</tr>
 <%
@@ -41,7 +43,7 @@
 	}else{
 %>
  		<tr>
-			<td colspan="4">조회된 데이터가 없습니다.</td>
+			<td colspan="5">조회된 데이터가 없습니다.</td>
 			
 		</tr>
 <%
